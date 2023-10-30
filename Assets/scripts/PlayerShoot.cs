@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
@@ -40,7 +41,6 @@ public class PlayerShoot : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-
         // Disparamos en la última dirección de disparo.
         rb.velocity = lastShootDirection * bulletSpeed;
     }

@@ -10,11 +10,12 @@ public class CoinSpawner : MonoBehaviour
     [SerializeField] private float spawnDelay = 2.0f;
     // Radio en el que se generan las monedas.
     [SerializeField] private float spawnRadius = 5.0f; 
-
+    // Temporizador para controlar el tiempo entre generaciones.
     private float timeSinceLastSpawn = 0.0f;
 
     void Update()
     {
+        // Incrementa el temporizador.
         timeSinceLastSpawn += Time.deltaTime;
 
         if (timeSinceLastSpawn >= spawnDelay)

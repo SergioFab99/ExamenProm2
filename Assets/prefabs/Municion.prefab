@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7283007026641967375}
   - component: {fileID: 5092676767588418440}
   m_Layer: 5
-  m_Name: Moneda
+  m_Name: Municion
   m_TagString: Moneda
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 4
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.9677757, b: 0, a: 1}
+  m_Color: {r: 0.28835887, g: 0.754717, b: 0.32716006, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

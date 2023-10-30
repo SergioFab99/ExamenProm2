@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Enemy2 : MonoBehaviour
 {   
-    [SerializeField] private float speed = 2f;
+    [SerializeField] private float speed = 0f;
 
     private bool movingUp = true;
 

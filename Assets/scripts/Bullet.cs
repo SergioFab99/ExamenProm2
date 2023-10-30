@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    //[SerializeField] private float speed = 10f;
     public int damage = 10; // Cambiamos la variable damage para que sea pública.
 
 
