@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
         instance = this;
     }
 
-    public void CollectCoin() 
+    public void CollectAmmo() 
     {
         puntos += 1; 
         Debug.Log("Puntos actuales: " + puntos);

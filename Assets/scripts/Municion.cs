@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Moneda : MonoBehaviour 
+public class Municion : MonoBehaviour 
 {
 
   private Rigidbody2D rb;
@@ -19,8 +19,8 @@ public class Moneda : MonoBehaviour
         // Recoge la moneda
         Destroy(gameObject);
 
-        // Aumenta puntuación  
-        GameManager.instance.CollectCoin();
+        // Aumenta bullets 
+        GameManager.instance.CollectAmmo();
       }
   }
 

@@ -18,10 +18,10 @@ public class PlayerMovement : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other) {
         // Recoger moneda
-        if (other.CompareTag("Moneda")) 
+        if (other.CompareTag("Municion")) 
         {
             Destroy(other.gameObject);
-            // Código para sumar puntos
+            //incrementar balas
         }
     }
 
