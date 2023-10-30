@@ -6,22 +6,26 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
     public static GameManager instance;
+    public PlayerShoot PlayerShoot;
+
   
     public int puntos;
    
-    void Awake() {
+    void Awake() 
+    {
         instance = this;
     }
 
-    public void CollectAmmo() 
+
+    public void CollectAmmo()
     {
-        puntos += 1; 
-        Debug.Log("Puntos actuales: " + puntos);
-        // Si puntos es igual a 10, cambia a la escena de victoria
-        if (puntos == 10)
-        {
-            SceneManager.LoadScene("Victoria");
-        }
+        // Incrementar balas actuales del jugador
+        PlayerShoot.currentBullets += 1;
+
+        // Limitar al máximo de balas
+        PlayerShoot.currentBullets = Mathf.Min(PlayerShoot.currentBullets, PlayerShoot.maxbullets);
+
+        Debug.Log("Balas actuales: " + PlayerShoot.currentBullets);
     }
-    
+
 }

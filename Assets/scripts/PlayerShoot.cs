@@ -8,8 +8,8 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab; // Arrastra aquí el prefab de la bala.
     [SerializeField] private float bulletSpeed = 10f;
     [SerializeField] private float cooldownTime = 0.01f;
-    [SerializeField] private int maxbullets = 5;
-    private int currentBullets = 0;
+    public int maxbullets = 5;
+    public int currentBullets = 0;
     private float lastShotTime;
     private Vector3 lastShootDirection; // Almacena la última dirección de disparo.
 
