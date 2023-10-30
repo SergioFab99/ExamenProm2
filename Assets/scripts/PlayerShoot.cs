@@ -8,12 +8,14 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab; // Arrastra aquí el prefab de la bala.
     [SerializeField] private float bulletSpeed = 10f;
     [SerializeField] private float cooldownTime = 0.01f;
-
+    [SerializeField] private int maxbullets = 5;
+    private int currentBullets = 0;
     private float lastShotTime;
     private Vector3 lastShootDirection; // Almacena la última dirección de disparo.
 
     void Start()
     {
+        currentBullets = maxbullets;
         lastShotTime = -cooldownTime; // Inicializamos para permitir el primer disparo.
     }
 
@@ -32,7 +34,13 @@ public class PlayerShoot : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && Time.time - lastShotTime >= cooldownTime)
         {
-            Shoot();
+
+            if (currentBullets > 0)
+            { // Verificamos si hay balas
+                Shoot();
+                currentBullets--; // Restamos una bala
+            }
+
             lastShotTime = Time.time;
         }
     }
@@ -43,5 +51,9 @@ public class PlayerShoot : MonoBehaviour
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         // Disparamos en la última dirección de disparo.
         rb.velocity = lastShootDirection * bulletSpeed;
+        if (currentBullets == 0)
+        {
+            //no dispara
+        }
     }
 }

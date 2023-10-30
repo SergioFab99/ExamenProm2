@@ -315,6 +315,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8451527838193156395, guid: 542cb67d141772348ae871d359c9f448, type: 3}
   bulletSpeed: 10
   cooldownTime: 0.1
+  maxbullets: 10
 --- !u!1 &516241593
 GameObject:
   m_ObjectHideFlags: 0
