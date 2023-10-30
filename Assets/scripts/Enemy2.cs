@@ -1,35 +1,30 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
 public class Enemy2 : MonoBehaviour
-{   
-    [SerializeField] private float speed = 0f;
+{
+    public GameObject bulletPrefab;
+    public float bulletSpeed = 5f;
+    public float fireRate = 1f;
 
-    private bool movingUp = true;
-
-    private float topBoundary = 1f;
-    private float bottomBoundary = -1f;
+    private float lastFireTime;
 
     void Update()
     {
-        if(movingUp)
+        if (Time.time - lastFireTime > fireRate)
         {
-            transform.position += Vector3.up * speed * Time.deltaTime;
-        }
-        else 
-        {
-            transform.position += Vector3.down * speed * Time.deltaTime;        
-        }
-
-        if(transform.position.y >= topBoundary)
-        {
-            movingUp = false;
-        }
-        else if(transform.position.y <= bottomBoundary)
-        {
-            movingUp = true;
+            FireBullet();
+            lastFireTime = Time.time;
         }
     }
 
+    void FireBullet()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+
+        // Dispara hacia la izquierda
+        Vector2 direction = Vector2.left;
+
+        rb.velocity = direction * bulletSpeed;
+    }
 }
