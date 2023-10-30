@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinSpawner : MonoBehaviour
+public class AmmoSpawner : MonoBehaviour
 {
     // El prefab de la moneda que queremos instanciar.
     [SerializeField] private GameObject coinPrefab;

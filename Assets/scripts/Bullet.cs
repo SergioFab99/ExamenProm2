@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public int damage = 10; // Cambiamos la variable damage para que sea pública.
-
-
+    public int damage = 10; 
     void Start()
     {
         // Destruye la bala después de 1 segundos.
