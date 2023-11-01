@@ -1,59 +1,41 @@
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-public class Boss : MonoBehaviour 
+public class Boss : MonoBehaviour
 {
-    public int maxVida = 100;
-    public int vidaActual;
+    // Variable para el Rigidbody2D del boss
+    private Rigidbody2D rb;
 
-    public float velocidad;
-    public int dañoContacto;
-    public Transform limiteIzq, limiteDer;
+    // Variable para la velocidad del boss
+    [SerializeField] private float speed = 5f;
 
-    public GameObject bala;
-    public float fireRate;
-    private float ultimoDisparo;
+    // Variable para la dirección del boss
+    private Vector2 direction = Vector2.left;
 
+    // Variable para el límite izquierdo del movimiento
+    [SerializeField] private float leftLimit = -2f;
+
+    // Variable para el límite derecho del movimiento
+    [SerializeField] private float rightLimit = 2f;
+
+    // Método que se ejecuta al iniciar el juego
     void Start()
     {
-        vidaActual = maxVida; 
+        // Obtener el componente Rigidbody2D del boss
+        rb = GetComponent<Rigidbody2D>();
     }
 
+    // Método que se ejecuta en cada frame del juego
     void Update()
     {
-        if (vidaActual > maxVida * 0.5f) 
-        {
-            // Movimiento izquierda-derecha (Enemigo1)
-            transform.Translate(Vector2.right * velocidad * Time.deltaTime);
+        // Calcular la posición x del boss usando la función PingPong
+        float x = Mathf.PingPong(Time.time * speed, rightLimit - leftLimit) + leftLimit;
 
-            if (transform.position.x > limiteDer.position.x) 
-            {
-                velocidad = -Mathf.Abs(velocidad);
-            }
-            else if (transform.position.x < limiteIzq.position.x) 
-            {
-                velocidad = Mathf.Abs(velocidad);
-            }
-        }
-        else 
-        {
-             // Disparo hacia el jugador (Enemigo2)
-             if(Time.time > ultimoDisparo + fireRate)
-             {
-                 Instantiate(bala, transform.position, transform.rotation);
-                 ultimoDisparo = Time.time;  
-             }
-        }
+        // Crear un vector con la posición x y la posición y actual del boss
+        Vector2 position = new Vector2(x, rb.position.y);
+
+        // Mover el boss a la nueva posición usando la función MovePosition
+        rb.MovePosition(position);
     }
-
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.tag == "Player") 
-        {
-            
-            // En lugar de VidaJugador:
-            col.gameObject.GetComponent<PlayerLife>().RecibirDaño(dañoContacto); 
-        }
-    }
-
 }
+

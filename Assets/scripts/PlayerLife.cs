@@ -17,13 +17,4 @@ public class PlayerLife : MonoBehaviour
             }
         }
     }
-    public void RecibirDaño(int daño)
-    {
-        life -= daño;
-        if (life <= 0)
-        {
-            Destroy(gameObject);
-            SceneManager.LoadScene("Derrota");
-        }
-    }
 }
