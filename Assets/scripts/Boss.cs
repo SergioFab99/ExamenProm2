@@ -19,10 +19,10 @@ public class Boss : MonoBehaviour
     public float rightLimit = 4f;
 
     // Variable para la vida del boss
-    public float health = 100f;
+    public int health = 100;
 
     // Variable para el valor de vida que indica que el boss está herido
-    public float hurtValue = 50f;
+    public int hurtValue = 50;
 
     // Variable para el estado del boss
     private string state = "normal";
@@ -41,12 +41,25 @@ public class Boss : MonoBehaviour
 
     // Variable para el contador de tiempo
     private float timer = 0f;
+    private int damage = 10;
 
     // Método que se ejecuta al iniciar el juego
     void Start()
     {
         // Obtener el componente Rigidbody2D del boss
         rb = GetComponent<Rigidbody2D>();
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Si el objeto es una bala
+        if (collision.gameObject.tag == "Bullet")
+        {
+            // Reducir la vida del boss según el daño
+            health -= damage;
+
+            // Destruir la bala
+            Destroy(collision.gameObject);
+        }
     }
 
     // Método que se ejecuta en cada frame del juego
