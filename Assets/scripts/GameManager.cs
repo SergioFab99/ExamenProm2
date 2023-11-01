@@ -3,29 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour {
-
+public class GameManager : MonoBehaviour
+{
     public static GameManager instance;
-    public PlayerShoot PlayerShoot;
 
-  
-    public int puntos;
-   
-    void Awake() 
+    public int maxBullets = 20;
+    public int currentBullets;
+
+    void Awake()
     {
         instance = this;
+        currentBullets = maxBullets;
     }
-
 
     public void CollectAmmo()
     {
-        // Incrementar balas actuales del jugador
-        PlayerShoot.currentBullets += 1;
-
-        // Limitar al m�ximo de balas
-        PlayerShoot.currentBullets = Mathf.Min(PlayerShoot.currentBullets, PlayerShoot.maxbullets);
-
-        Debug.Log("Balas actuales: " + PlayerShoot.currentBullets);
+        if(currentBullets == maxBullets) 
+        {
+            // Balas llenas, aumentar máximo
+            maxBullets += 5;
+        }
+        else 
+        {
+            // Balas no llenas, recargar hasta máximo actual
+            currentBullets = Mathf.Min(currentBullets + 5, maxBullets); 
+        }
     }
-
 }

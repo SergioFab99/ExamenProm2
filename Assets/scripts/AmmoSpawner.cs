@@ -21,13 +21,13 @@ public class AmmoSpawner : MonoBehaviour
         if (timeSinceLastSpawn >= spawnDelay)
         {
             // Llama a la función para generar una moneda.
-            SpawnCoin();
+            SpawnAmmo();
             // Reinicia el temporizador.
             timeSinceLastSpawn = 0.0f; 
         }
     }
 
-    void SpawnCoin()
+    void SpawnAmmo()
     {
         // Genera una posición aleatoria dentro del radio especificado.
         Vector2 randomPosition = Random.insideUnitCircle * spawnRadius;

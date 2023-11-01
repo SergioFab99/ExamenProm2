@@ -13,7 +13,9 @@ public class Enemy2 : MonoBehaviour
         if (Time.time - lastFireTime > fireRate)
         {
             FireBullet();
+            //actualiza el tiempo de disparo
             lastFireTime = Time.time;
+            //se destruya despues de 2 segundos
         }
     }
 
@@ -24,7 +26,8 @@ public class Enemy2 : MonoBehaviour
 
         // Dispara hacia la izquierda
         Vector2 direction = Vector2.left;
-
         rb.velocity = direction * bulletSpeed;
+        //se destruye el bullet despues de 2 segundos
+        Destroy(bullet, 2f);
     }
 }
