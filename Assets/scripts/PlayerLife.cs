@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 public class PlayerLife : MonoBehaviour
 {
     public int life = 1;
@@ -15,9 +14,16 @@ public class PlayerLife : MonoBehaviour
             {
                 Destroy(gameObject);
                 SceneManager.LoadScene("Derrota");
-
-
             }
+        }
+    }
+    public void RecibirDaño(int daño)
+    {
+        life -= daño;
+        if (life <= 0)
+        {
+            Destroy(gameObject);
+            SceneManager.LoadScene("Derrota");
         }
     }
 }
