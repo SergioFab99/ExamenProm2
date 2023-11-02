@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - Moneda
   - Municion
+  - Enemy2
   layers:
   - Default
   - TransparentFX
