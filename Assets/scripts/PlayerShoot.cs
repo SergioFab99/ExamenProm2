@@ -5,11 +5,15 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
-    [SerializeField] private GameObject bulletPrefab; // Arrastra aquí el prefab de la bala.
+    // Arrastra aquí el prefab de la bala.
+    [SerializeField] private GameObject bulletPrefab; 
+    [SerializeField] private GameObject secondBulletPrefab;
+
     [SerializeField] private float bulletSpeed = 10f;
     [SerializeField] private float cooldownTime = 0.01f;
     private float lastShotTime;
-    private Vector3 lastShootDirection; // Almacena la última dirección de disparo.
+    // Almacena la última dirección de disparo.
+    private Vector3 lastShootDirection; 
 
     void Update()
     {

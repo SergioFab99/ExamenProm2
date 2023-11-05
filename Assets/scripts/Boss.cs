@@ -49,19 +49,24 @@ public class Boss : MonoBehaviour
         // Obtener el componente Rigidbody2D del boss
         rb = GetComponent<Rigidbody2D>();
     }
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
         // Si el objeto es una bala
-        if (collision.gameObject.tag == "Bullet")
+        if (other.gameObject.tag == "Bullet")
         {
-            // Reducir la vida del boss según el daño
+            // Reducir la vida del boss en 10 
             health -= damage;
 
             // Destruir la bala
-            Destroy(collision.gameObject);
+            Destroy(other.gameObject);
+
+            // Si la vida del boss es menor o igual a 0, destruirlo
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
-
     // Método que se ejecuta en cada frame del juego
     void Update()
     {

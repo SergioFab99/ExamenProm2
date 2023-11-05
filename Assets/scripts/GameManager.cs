@@ -14,6 +14,19 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         currentBullets = maxBullets;
+        //con esta lógica evitamos que aparezca "is loading" y unity crashe ,es un solucionador de errores
+        if (instance == null)
+        {
+            instance = this;
+            // Evita que se destruya al cambiar de escena.
+            DontDestroyOnLoad(this.gameObject); 
+            currentBullets = maxBullets;
+        }
+        else
+        {
+            // Si ya existe una instancia, destruye esta.
+            Destroy(this.gameObject); 
+        }
     }
 
     public void CollectAmmo()
@@ -35,6 +48,11 @@ public class GameManager : MonoBehaviour
         if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
             SceneManager.LoadScene("Nivel2");
+        }
+        
+        if (SceneManager.GetActiveScene().name == "Nivel2" && GameObject.FindGameObjectsWithTag("Boss").Length == 0)
+        {
+            SceneManager.LoadScene("Victoria");
         }
     }
 }
