@@ -42,14 +42,14 @@ public class GameManager : MonoBehaviour
             currentBullets = Mathf.Min(currentBullets + 5, maxBullets); 
         }
     }
-    //si no quedan enemigos en la escena ,cambiar al nivel 2
+    // Si está en la escena "Nivel1" y no hay objetos con el tag "Enemy" cambiar a la escena "Nivel2"
     void Update()
     {
-        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+        if (SceneManager.GetActiveScene().name == "Nivel1" && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
             SceneManager.LoadScene("Nivel2");
         }
-        
+        // Si está en la escena "Nivel2" y no hay objetos con el tag "Enemy" cambiar a la escena "Nivel3"
         if (SceneManager.GetActiveScene().name == "Nivel2" && GameObject.FindGameObjectsWithTag("Boss").Length == 0)
         {
             SceneManager.LoadScene("Victoria");
