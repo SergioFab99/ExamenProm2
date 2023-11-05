@@ -29,4 +29,12 @@ public class GameManager : MonoBehaviour
             currentBullets = Mathf.Min(currentBullets + 5, maxBullets); 
         }
     }
+    //si no quedan enemigos en la escena ,cambiar al nivel 2
+    void Update()
+    {
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+        {
+            SceneManager.LoadScene("Nivel2");
+        }
+    }
 }

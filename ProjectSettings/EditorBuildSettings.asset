@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Derrota.unity
     guid: 98463ffc28ddd4f4b967a721563d37bb
+  - enabled: 1
+    path: Assets/Scenes/Nivel2.unity
+    guid: 92ad4d4ec51737b488790e621476ee0a
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
