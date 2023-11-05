@@ -10,4 +10,12 @@ public class Bullet : MonoBehaviour
         // Destruye la bala después de 1 segundos.
         Destroy(gameObject, 1f);
     }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        //si colisiona con un objeto que tenga el tag "Boss" se destruye
+        if (collision.gameObject.tag == "Boss")
+        {
+            Destroy(gameObject);
+        }
+    }
 }
