@@ -14,19 +14,6 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         currentBullets = maxBullets;
-        //con esta lógica evitamos que aparezca "is loading" y unity crashe ,es un solucionador de errores
-        if (instance == null)
-        {
-            instance = this;
-            // Evita que se destruya al cambiar de escena.
-            DontDestroyOnLoad(this.gameObject); 
-            currentBullets = maxBullets;
-        }
-        else
-        {
-            // Si ya existe una instancia, destruye esta.
-            Destroy(this.gameObject); 
-        }
     }
 
     public void CollectAmmo()
@@ -45,13 +32,17 @@ public class GameManager : MonoBehaviour
     // Si está en la escena "Nivel1" y no hay objetos con el tag "Enemy" cambiar a la escena "Nivel2"
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "Nivel1" && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+        var sceneName = SceneManager.GetActiveScene().name;
+        Debug.Log("Current scene: " + sceneName);
+
+        if (sceneName == "Nivel1" && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
+            Debug.Log("Switching to Nivel2");
             SceneManager.LoadScene("Nivel2");
         }
-        // Si está en la escena "Nivel2" y no hay objetos con el tag "Enemy" cambiar a la escena "Nivel3"
-        if (SceneManager.GetActiveScene().name == "Nivel2" && GameObject.FindGameObjectsWithTag("Boss").Length == 0)
+        if (sceneName == "Nivel2" && GameObject.FindGameObjectsWithTag("Boss").Length == 0)
         {
+            Debug.Log("Switching to Victoria");
             SceneManager.LoadScene("Victoria");
         }
     }
