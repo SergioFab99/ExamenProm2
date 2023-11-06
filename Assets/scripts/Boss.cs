@@ -13,10 +13,10 @@ public class Boss : MonoBehaviour
     private Vector2 direction = Vector2.left;
 
     // Variable para el límite izquierdo del movimiento
-    public float leftLimit = -4f;
+    public float leftLimit;
 
     // Variable para el límite derecho del movimiento
-    public float rightLimit = 4f;
+    public float rightLimit;
 
     // Variable para la vida del boss
     public int health = 100;
@@ -42,12 +42,13 @@ public class Boss : MonoBehaviour
     // Variable para el contador de tiempo
     private float timer = 0f;
     private int damage = 10;
-
-    // Método que se ejecuta al iniciar el juego
     void Start()
     {
         // Obtener el componente Rigidbody2D del boss
         rb = GetComponent<Rigidbody2D>();
+        float initialPosition = transform.position.x;
+        leftLimit = initialPosition - 4f;
+        rightLimit = initialPosition + 4f;
     }
     void OnTriggerEnter2D(Collider2D other)
     {

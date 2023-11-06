@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     // Si está en la escena "Nivel1" y no hay objetos con el tag "Enemy" cambiar a la escena "Nivel2"
     void Update()
     {
-        var sceneName = SceneManager.GetActiveScene().name;
+        var sceneName = SceneManager.GetActiveScene().name; 
         Debug.Log("Current scene: " + sceneName);
 
         if (sceneName == "Nivel1" && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
